@@ -135,4 +135,6 @@ setTemplateFirst(Mat &outMat, nlohmann::json wholeresponce1, string string1, int
 
 nlohmann::json jsonData();
 
+int doCheckData(cv::Mat rgbMat, int w, int h);
+
 #endif /* Accura_h */
