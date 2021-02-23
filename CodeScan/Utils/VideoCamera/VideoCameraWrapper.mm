@@ -120,6 +120,7 @@ BOOL isCheckMSG;
 BOOL isFirstMSG;
 
 BOOL isHologram;
+BOOL ischeckMation;
 
 
 
@@ -143,6 +144,8 @@ BOOL isHologram;
     isCheckMSG = true;
     isFirstMSG = true;
     isHologram = true;
+    
+    ischeckMation = true;
     
     PrimaryData primaryData = setTemplateFirst(firstTemp, wholeresponce, changeCard, cardPosition);
     changeCard = primaryData.cardSide;
@@ -293,6 +296,26 @@ cv::Mat cvMatFromUIImage(UIImage* image)
     [lock1 lock];
     _matOrg.release();
     
+    if (ischeckMation){
+        ischeckMation = false;
+            int doCheckData1 = doCheckData(image, image.cols,  image.rows);
+       
+            if (doCheckData1 == 0){
+                
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //Update UI
+                        doucumentMsg.text = @"Keep Document Steady";
+                        
+                    });
+
+                ischeckMation = true;
+                _isMotion = NO;
+            }else{
+
+                _isMotion = YES;
+            }
+    }
+    
     //crop
     UIImage *img = uiimageFromCVMat(image);
     CGPoint point = CGPointMake((([[UIScreen mainScreen] bounds].size.width / 2 ) - (viewScanningLayerWidth / 2 )), (([[UIScreen mainScreen] bounds].size.height / 2 ) - (viewScanningLayerHeight / 2 )));
@@ -365,6 +388,10 @@ cv::Mat cvMatFromUIImage(UIImage* image)
         }
         
         if (_isCapturing == NO) {
+            continue;
+        }
+        
+        if (_isMotion == NO) {
             continue;
         }
         
@@ -527,7 +554,7 @@ cv::Mat cvMatFromUIImage(UIImage* image)
                 [self Recog_MRZ:gimg];
             }
             
-            
+            ischeckMation = true;
             finaldata = imageOpenCv.mapData;
             
             if (finaldata.size() == 0){
@@ -535,6 +562,7 @@ cv::Mat cvMatFromUIImage(UIImage* image)
             }
             [self performSelectorOnMainThread:@selector(recog_Successed) withObject:nil waitUntilDone:YES];
         }else{
+            ischeckMation = true;
             if(!isCheckMSG){
                 dispatch_async(dispatch_get_main_queue(), ^{
                     doucumentMsg.text = @"";
