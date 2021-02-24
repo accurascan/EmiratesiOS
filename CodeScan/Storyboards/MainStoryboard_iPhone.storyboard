@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rq6-8e-Wds">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rq6-8e-Wds">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -139,6 +139,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="5dg-N9-Xf1"/>
                         <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="4Xp-ZJ-diK" firstAttribute="trailing" secondItem="5dg-N9-Xf1" secondAttribute="trailing" id="0JX-ZJ-Nbs"/>
@@ -177,7 +178,6 @@
                             <constraint firstItem="RFq-ho-TYb" firstAttribute="top" secondItem="Xeq-2P-V46" secondAttribute="bottom" id="zdU-FO-Kvy"/>
                             <constraint firstItem="Xeq-2P-V46" firstAttribute="leading" secondItem="5dg-N9-Xf1" secondAttribute="leading" id="zoD-At-9VZ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="5dg-N9-Xf1"/>
                     </view>
                     <navigationItem key="navigationItem" id="yb4-xv-Nib"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -194,7 +194,8 @@
                         <outlet property="imageViewCountryImage" destination="CFr-xc-ik8" id="eGK-xk-Sb1"/>
                         <outlet property="lblOCRMsg" destination="siT-lO-al7" id="0Vs-Pi-GbA"/>
                         <outlet property="lblTitleCountryName" destination="KvH-IU-FZJ" id="pzk-Uv-aNK"/>
-                        <outlet property="viewNavigation" destination="4Xp-ZJ-diK" id="tFO-c7-yW0"/>
+                        <outlet property="viewNavigation" destination="4Xp-ZJ-diK" id="yx9-D4-EmO"/>
+                        <outlet property="viewStatusbar" destination="NT2-gE-6Fu" id="zyQ-pt-w1A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9L-oL-WSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,7 +248,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vOm-IN-T7I">
                                                 <rect key="frame" x="74.666666666666671" y="638" width="248.66666666666663" height="40"/>
                                                 <subviews>
-                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVu-YP-Wvh" userLabel="Liveness">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVu-YP-Wvh" userLabel="Liveness">
                                                         <rect key="frame" x="-119.33333333333334" y="0.0" width="119.33333333333333" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="15"/>
@@ -255,7 +256,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xht-gM-ZTT" userLabel="Face Match">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xht-gM-ZTT" userLabel="Face Match">
                                                         <rect key="frame" x="0.0" y="0.0" width="119.33333333333333" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="14"/>
@@ -266,7 +267,7 @@
                                                             <action selector="btnFaceMatchAction:" destination="YsQ-No-yN5" eventType="touchUpInside" id="DCP-1H-Sb4"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37f-sv-k4r">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37f-sv-k4r">
                                                         <rect key="frame" x="129.33333333333331" y="0.0" width="119.33333333333331" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="15"/>
@@ -309,6 +310,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="8M6-6M-xv4"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9UJ-Yf-d56" firstAttribute="leading" secondItem="8M6-6M-xv4" secondAttribute="leading" id="7E9-Kc-dTm"/>
@@ -319,7 +321,6 @@
                             <constraint firstItem="9UJ-Yf-d56" firstAttribute="bottom" secondItem="8M6-6M-xv4" secondAttribute="bottom" id="owR-hl-pKM"/>
                             <constraint firstItem="gUU-Uh-THT" firstAttribute="top" secondItem="2H8-2N-fWQ" secondAttribute="top" id="ywl-7C-GTg"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8M6-6M-xv4"/>
                     </view>
                     <connections>
                         <outlet property="btnCancle" destination="37f-sv-k4r" id="UQr-ul-u7U"/>

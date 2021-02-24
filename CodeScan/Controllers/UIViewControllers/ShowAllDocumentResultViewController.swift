@@ -514,7 +514,7 @@ func getValue(stKey: String) -> String {
         
         picker.dismiss(animated: true, completion: nil)
         SVProgressHUD.show(withStatus: "Loading...")
-        DispatchQueue.global(qos: .background).async {
+//        DispatchQueue.global(qos: .background).async {
             guard var chosenImage:UIImage = info[self.convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else{return}
             
             //Capture Image Left flipped
@@ -553,10 +553,7 @@ func getValue(stKey: String) -> String {
                      */
                     let face2 : NSFaceRegion? = EngineWrapper.detectTargetFaces(chosenImage, feature1: self.faceRegion?.feature as Data?)   //identify face in back image which found in front image
                     
-                    let data = face2?.bound
-                     
-                     
-                    let image = self.resizeImage(image: chosenImage, targetSize: data!)
+                   
                     
                     
                     /*
@@ -566,6 +563,10 @@ func getValue(stKey: String) -> String {
                      */
                     let fm_Score = EngineWrapper.identify(self.faceRegion?.feature, featurebuff2: face2?.feature)
                     if(fm_Score != 0.0){
+                        let data = face2?.bound
+                         
+                         
+                        let image = self.resizeImage(image: chosenImage, targetSize: data!)
                         var isFindImg: Bool = false
                         
                         self.faceChozImage = image
@@ -600,7 +601,7 @@ func getValue(stKey: String) -> String {
                 }
                 SVProgressHUD.dismiss()
             })
-        }
+//        }
     }
     
          func resizeImage(image: UIImage, targetSize: CGRect) -> UIImage {

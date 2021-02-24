@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var constraintFlipImageWidth: NSLayoutConstraint!
     @IBOutlet weak var constraintFlipImageHeight: NSLayoutConstraint!
     @IBOutlet weak var viewNavigation: UIView!
+    @IBOutlet weak var viewStatusbar: UIView!
     
     
     var videoCameraWrapper: VideoCameraWrapper? = nil
@@ -188,6 +189,7 @@ class ViewController: UIViewController {
         
         
         viewNavigation.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
+        viewStatusbar.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
         
         isFront = true
         if setImage!{
