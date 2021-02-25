@@ -10,7 +10,6 @@ import UIKit
 import SVProgressHUD
 import CoreImage
 import Accelerate
-import Alamofire
 
 struct Objects {
     var name : String!
@@ -124,7 +123,7 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
         }
         
         if UserDefaults.standard.value(forKey: "ScanningDataMRZ") != nil{
-            dictScanningData  = UserDefaults.standard.value(forKey: "ScanningDataMRZ") as! NSDictionary  // Get UserDefaults Store Dictionary 
+            dictScanningData  = UserDefaults.standard.value(forKey: "ScanningDataMRZ") as! NSDictionary  // Get UserDefaults Store Dictionary
         }
         
         if let strline: String =  dictScanningData["lines"] as? String {
@@ -191,8 +190,6 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
         }
         
         
-//        tblViewAllDocumentResult.estimatedRowHeight = 60.0
-//        tblViewAllDocumentResult.rowHeight = UITableView.automaticDimension
         
         
         for (key,value) in dictFinalResultFront{
@@ -573,29 +570,23 @@ func getValue(stKey: String) -> String {
                         
                         self.faceChozImage = image
                         
-//                        for (index,var dict) in self.arrDocumentData.enumerated(){
-//                            for st in dict.keys{
-//                                if st == KEY_FACE_IMAGE{
-//
-//                                    //                                    self.arrDocumentData[index] = dict
-//                                    isFindImg = true
-//                                    break
-//                                }
-//                                if isFindImg{ break }
-//                            }
-//                        }
                         
                         self.removeOldValue("LIVENESS SCORE : ")
 //                        self.btnFaceMatch.isHidden = true
                         self.removeOldValue("FACEMATCH SCORE : ")
                         let twoDecimalPlaces = String(format: "%.2f", fm_Score * 100) //Match score Convert Float Value
-                        let dict = [KEY_VALUE: "\(twoDecimalPlaces)",KEY_TITLE:"FACEMATCH SCORE : "] as [String : AnyObject]
+                        let dict = [KEY_VALUE: "\(twoDecimalPlaces) %",KEY_TITLE:"FACEMATCH SCORE : "] as [String : AnyObject]
                         self.arrDocumentDataFace.insert(dict, at: 0)
-                        self.faceScoreData = twoDecimalPlaces
+                        self.faceScoreData = "\(twoDecimalPlaces) %"
                         
                     }else {
+                        self.faceChozImage = chosenImage
+                        self.faceScoreData = "0.00 %"
 //                        self.btnFaceMatch.isHidden = false
                     }
+                } else {
+                    self.faceChozImage = chosenImage
+                    self.faceScoreData = "0.00 %"
                 }
                 UIView.animate (withDuration: 0.1, animations: {
                     self.tblViewAllDocumentResult.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
@@ -630,18 +621,12 @@ func getValue(stKey: String) -> String {
             if newY + newHeight > image.size.height{
                 newHeight = image.size.height - newY
             }
-            
-            // This is the rect that we've calculated out and this is what is actually used below
+
             let rect = CGRect(x: newX, y: newY, width: newWidth, height: newHeight)
             let imageRef: CGImage = contextImage.cgImage!.cropping(to: rect)!
             
             let image1: UIImage = UIImage(cgImage: imageRef)
             
-            // Actually do the resizing to the rect using the ImageContext stuff
-    //        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-    //        image.draw(in: rect)
-    //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    //        UIGraphicsEndImageContext()
 
             return image1
         }
