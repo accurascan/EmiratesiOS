@@ -22,67 +22,12 @@
 using namespace cv;
 using namespace std;
 
-typedef struct Recte {
-    Recte(int i, int i1, int i2, int i3) {
-        left = i;
-        top = i1;
-        right = i2;
-        bottom = i3;
-        
-    }
-    
-    int left;
-    int top;
-    int right;
-    int bottom;
-    
-    bool valueInRange(int value, int min, int max) { return (value >= min) && (value <= max); }
-    
-public:
-    bool rectOverlap(Recte A, Recte B) {
-        bool xOverlap = valueInRange(A.left, B.left, B.right) ||
-        valueInRange(B.left, A.left, A.right);
-        
-        bool yOverlap = valueInRange(A.top, B.top, B.bottom) ||
-        valueInRange(B.top, A.top, A.bottom);
-        
-        return xOverlap && yOverlap;
-    }
-    
-    bool contains(Recte R1, Recte R2) {
-        if ((R2.right) < (R1.right)
-            && (R2.left) > (R1.left)
-            && (R2.top) > (R1.top)
-            && (R2.bottom) < (R1.bottom)
-            ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-} RECTE, *PRECTE;
-
 
 struct Data_t {
     std::string key_;
     std::string data_;
     
     Data_t(std::string key_v, std::string data_v) : key_(key_v), data_(data_v) {}
-};
-
-struct Rect_t {
-    std::string key_;
-    Recte data_;
-    
-    Rect_t(std::string key_v, Recte data_v) : key_(key_v), data_(data_v) {}
-};
-
-struct Required_t {
-    std::string key_;
-    int data_;
-    
-    
-    Required_t(std::string key_v, int data_v) : key_(key_v), data_(data_v) {}
 };
 
 class ImageOpenCv {

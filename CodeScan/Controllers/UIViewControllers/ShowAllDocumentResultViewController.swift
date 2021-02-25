@@ -41,6 +41,7 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
     
     @IBOutlet weak var btnFaceMatch: UIButton!
     @IBOutlet weak var viewNavigationBar: UIView!
+    @IBOutlet weak var viewStatusbar: UIView!
     
     
     //MARK:- Variable
@@ -97,6 +98,7 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
         super.viewDidLoad()
         
        viewNavigationBar.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
+        viewStatusbar.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
         
         isFirstTime = true
         
@@ -584,14 +586,15 @@ func getValue(stKey: String) -> String {
 //                        }
                         
                         self.removeOldValue("LIVENESS SCORE : ")
-                        self.btnFaceMatch.isHidden = true
+//                        self.btnFaceMatch.isHidden = true
                         self.removeOldValue("FACEMATCH SCORE : ")
                         let twoDecimalPlaces = String(format: "%.2f", fm_Score * 100) //Match score Convert Float Value
                         let dict = [KEY_VALUE: "\(twoDecimalPlaces)",KEY_TITLE:"FACEMATCH SCORE : "] as [String : AnyObject]
                         self.arrDocumentDataFace.insert(dict, at: 0)
+                        self.faceScoreData = twoDecimalPlaces
                         
                     }else {
-                        self.btnFaceMatch.isHidden = false
+//                        self.btnFaceMatch.isHidden = false
                     }
                 }
                 UIView.animate (withDuration: 0.1, animations: {
@@ -654,7 +657,11 @@ func getValue(stKey: String) -> String {
         case 0:
             return arrFace.count
         case 1:
-            return arrDocumentDataFace.count
+            if faceScoreData != nil {
+                return 1
+            } else {
+                return 0
+            }
         case 2:
             return arrDocumentData.count
         case 3:
@@ -700,10 +707,10 @@ func getValue(stKey: String) -> String {
         }
         if indexPath.section == 1{
             let cell: FaceMatchResultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FaceMatchResultTableViewCell") as! FaceMatchResultTableViewCell
-            if !arrDocumentDataFace.isEmpty{
+            if faceScoreData != nil{
                 cell.viewBG.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
-                let  dictResultData: [String:AnyObject] = arrDocumentDataFace[indexPath.row]
-                cell.lblName.text = "FACEMATCH SCORE : \(dictResultData[KEY_VALUE] as? String ?? "")"
+//                let  dictResultData: [String:AnyObject] = arrDocumentDataFace[indexPath.row]
+                cell.lblName.text = "FACEMATCH SCORE : \(faceScoreData ?? "")"
             }
             
             return cell

@@ -13,3 +13,4 @@ int doRecogGrayImg_Passport(unsigned char* rImg,unsigned char* gImg,unsigned cha
 
 int doFaceDetect(unsigned char* rImg, unsigned char* gImg, unsigned char* bImg, int w, int h, unsigned char* photoImgR, unsigned char* photoImgG, unsigned char* photoImgB, int* phoW, int *phoH);
 
+int docrecog_scan_RecogEngine_closeOCR(int clear_ocr_data);

@@ -77,6 +77,7 @@
 		A3B98A99240CE44F00A1CAAA /* AccuraFace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B98A98240CE44F00A1CAAA /* AccuraFace.a */; };
 		A3DB282D2484B3AD00DC504B /* key.license in Resources */ = {isa = PBXBuildFile; fileRef = A3DB282B2484B3AC00DC504B /* key.license */; };
 		A3DB282E2484B3AD00DC504B /* accuraface.license in Resources */ = {isa = PBXBuildFile; fileRef = A3DB282C2484B3AD00DC504B /* accuraface.license */; };
+		A3E4E78F25E66ED400EEFC89 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E4E78E25E66ED400EEFC89 /* Launch Screen.storyboard */; };
 		A3FE6B1C23EBE851006DB239 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3FE6B1B23EBE851006DB239 /* MainStoryboard_iPhone.storyboard */; };
 		F17B5D65C6994F277B2EC726 /* Pods_AccuraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1E5ACBB7521B13715541C2 /* Pods_AccuraSDK.framework */; };
 		FA8E4D7A23DCADDC00C0F7CF /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8E4D7923DCADDC00C0F7CF /* FaceView.swift */; };
@@ -194,7 +195,8 @@
 		A3B98A98240CE44F00A1CAAA /* AccuraFace.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AccuraFace.a; sourceTree = "<group>"; };
 		A3BD2BF48CC8B09BF1D1065E /* Pods-Accura Scan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Accura Scan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Accura Scan/Pods-Accura Scan.release.xcconfig"; sourceTree = "<group>"; };
 		A3DB282B2484B3AC00DC504B /* key.license */ = {isa = PBXFileReference; lastKnownFileType = file; path = key.license; sourceTree = "<group>"; };
-		A3DB282C2484B3AD00DC504B /* accuraface.license */ = {isa = PBXFileReference; lastKnownFileType = file; path = accuraface.license; sourceTree = "<group>"; };
+		A3DB282C2484B3AD00DC504B /* accuraface.license */ = {isa = PBXFileReference; lastKnownFileType = text; path = accuraface.license; sourceTree = "<group>"; };
+		A3E4E78E25E66ED400EEFC89 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A3F50A8C23EC16EA001DFF16 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
 		A3FE6B1B23EBE851006DB239 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		A681A200B0E9D89F47FBE4CA /* Pods-AccuraSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccuraSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AccuraSDK/Pods-AccuraSDK.debug.xcconfig"; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 		FAD8829323DDE04E007247EC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				A3E4E78E25E66ED400EEFC89 /* Launch Screen.storyboard */,
 				A3FE6B1B23EBE851006DB239 /* MainStoryboard_iPhone.storyboard */,
 			);
 			path = Storyboards;
@@ -670,6 +673,7 @@
 				030BEC0C2269EFCB002450E0 /* cam.png in Resources */,
 				A33D33CC23EC507D001B7CD4 /* mMQDF_f_Passport_bottom_Gray.dic in Resources */,
 				A33E204123E2A931004FED85 /* ResultTableCell.xib in Resources */,
+				A3E4E78F25E66ED400EEFC89 /* Launch Screen.storyboard in Resources */,
 				5C94E025211ACA8200428686 /* Aller_Std_BdIt.ttf in Resources */,
 				A36DA6BC23EFE09000F3840D /* haarcascade_frontalface_alt.xml in Resources */,
 				5C94E029211ACA8200428686 /* Aller_Std_Rg.ttf in Resources */,
