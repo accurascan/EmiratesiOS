@@ -9,8 +9,8 @@ target 'AccuraSDK' do
  pod 'IQKeyboardManagerSwift'
  pod 'SwiftyJSON'
  pod 'SVProgressHUD'
- pod 'Alamofire'
- pod 'AFNetworking', '~> 3.0'
+# pod 'Alamofire'
+# pod 'AFNetworking', '~> 3.0'
 
 
 end

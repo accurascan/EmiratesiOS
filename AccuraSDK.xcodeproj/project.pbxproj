@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		030BEC0C2269EFCB002450E0 /* cam.png in Resources */ = {isa = PBXBuildFile; fileRef = 030BEC0B2269EFC9002450E0 /* cam.png */; };
-		18FE69CD2477DB83007DDA35 /* PostResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE69CC2477DB83007DDA35 /* PostResult.swift */; };
-		5C2D6E9920CA406300031D42 /* AFWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D6E9220CA406300031D42 /* AFWrapper.swift */; };
-		5C2D6E9A20CA406300031D42 /* CommonErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D6E9320CA406300031D42 /* CommonErrorAlert.swift */; };
-		5C2D6E9D20CA406300031D42 /* Rechability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D6E9720CA406300031D42 /* Rechability.swift */; };
-		5C2D6E9E20CA406300031D42 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D6E9820CA406300031D42 /* API.swift */; };
 		5C67D9872111E43E00154EB7 /* GlobalMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C67D9862111E43D00154EB7 /* GlobalMethods.m */; };
 		5C67D9962111E44E00154EB7 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C67D98D2111E44E00154EB7 /* NSObject+SBJSON.m */; };
 		5C67D9972111E44E00154EB7 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C67D98F2111E44E00154EB7 /* NSString+SBJSON.m */; };
@@ -107,12 +102,7 @@
 		030BEC0B2269EFC9002450E0 /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
 		0540F6CC908839F9619257A0 /* Pods-AccuraSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccuraSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-AccuraSDK/Pods-AccuraSDK.release.xcconfig"; sourceTree = "<group>"; };
 		081FC0F82D5D0D87B50F5A7D /* Pods_Accura_Lines.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Accura_Lines.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		18FE69CC2477DB83007DDA35 /* PostResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostResult.swift; sourceTree = "<group>"; };
 		1B1E5ACBB7521B13715541C2 /* Pods_AccuraSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccuraSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C2D6E9220CA406300031D42 /* AFWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFWrapper.swift; sourceTree = "<group>"; };
-		5C2D6E9320CA406300031D42 /* CommonErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonErrorAlert.swift; sourceTree = "<group>"; };
-		5C2D6E9720CA406300031D42 /* Rechability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rechability.swift; sourceTree = "<group>"; };
-		5C2D6E9820CA406300031D42 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5C67D96B2111E03500154EB7 /* Accura Scan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Accura Scan-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C67D9852111E43D00154EB7 /* GlobalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalMethods.h; sourceTree = "<group>"; };
 		5C67D9862111E43D00154EB7 /* GlobalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalMethods.m; sourceTree = "<group>"; };
@@ -284,20 +274,8 @@
 		5C2D6E9020CA3FF400031D42 /* Comman */ = {
 			isa = PBXGroup;
 			children = (
-				5C2D6E9820CA406300031D42 /* API.swift */,
-				5C2D6E9720CA406300031D42 /* Rechability.swift */,
-				5C2D6E9120CA406300031D42 /* WSCall */,
 			);
 			path = Comman;
-			sourceTree = "<group>";
-		};
-		5C2D6E9120CA406300031D42 /* WSCall */ = {
-			isa = PBXGroup;
-			children = (
-				5C2D6E9220CA406300031D42 /* AFWrapper.swift */,
-				5C2D6E9320CA406300031D42 /* CommonErrorAlert.swift */,
-			);
-			path = WSCall;
 			sourceTree = "<group>";
 		};
 		5C67D96A2111E02100154EB7 /* AccuraScan */ = {
@@ -545,7 +523,6 @@
 		A38570EE2318029A00FF7209 /* Api Calling */ = {
 			isa = PBXGroup;
 			children = (
-				18FE69CC2477DB83007DDA35 /* PostResult.swift */,
 				A33D33C323EC507D001B7CD4 /* default_user.png */,
 				A33D33C723EC507D001B7CD4 /* fdata.xml */,
 				A33D33C523EC507D001B7CD4 /* mMQDF_f_Passport_bottom_Gray.dic */,
@@ -750,7 +727,6 @@
 				5C67D9A82111E48C00154EB7 /* SVProgressHUD.m in Sources */,
 				617EB0E120BB705D00BCBFD9 /* NSObjectExtensions.swift in Sources */,
 				FAD8827B23DD8BB5007247EC /* FaceImageView.swift in Sources */,
-				5C2D6E9E20CA406300031D42 /* API.swift in Sources */,
 				A33E205423E2AB26004FED85 /* UserImgTableCell.swift in Sources */,
 				5C67D9872111E43E00154EB7 /* GlobalMethods.m in Sources */,
 				5C67D9962111E44E00154EB7 /* NSObject+SBJSON.m in Sources */,
@@ -758,14 +734,10 @@
 				5C67D9982111E44E00154EB7 /* SBJsonBase.m in Sources */,
 				FAD8828123DD95C5007247EC /* ImageHelper.m in Sources */,
 				617EB0C220BB521700BCBFD9 /* UIViewControllerExtensions.swift in Sources */,
-				5C2D6E9920CA406300031D42 /* AFWrapper.swift in Sources */,
-				5C2D6E9A20CA406300031D42 /* CommonErrorAlert.swift in Sources */,
-				5C2D6E9D20CA406300031D42 /* Rechability.swift in Sources */,
 				FAD8829E23DDE1D5007247EC /* VideoCameraWrapper.mm in Sources */,
 				5C67D99A2111E44E00154EB7 /* SBJsonWriter.m in Sources */,
 				A3A59CBF23EED3840028F551 /* FaceMatchResultTableViewCell.swift in Sources */,
 				A33E204C23E2AA78004FED85 /* DocumentTableCell.swift in Sources */,
-				18FE69CD2477DB83007DDA35 /* PostResult.swift in Sources */,
 				A33E205023E2AA78004FED85 /* ListTableCell.swift in Sources */,
 				FAD8828423DD95E1007247EC /* NSFaceRegion.m in Sources */,
 				5C67D9972111E44E00154EB7 /* NSString+SBJSON.m in Sources */,

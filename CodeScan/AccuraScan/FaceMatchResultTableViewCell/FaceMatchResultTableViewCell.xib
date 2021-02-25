@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,13 +26,13 @@
                         <rect key="frame" x="8" y="0.0" width="304" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pb2-dU-Elz">
-                                <rect key="frame" x="152" y="0.0" width="0.0" height="44"/>
+                                <rect key="frame" x="5" y="0.0" width="0.0" height="44"/>
                                 <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gP-Ok-UyA">
-                                <rect key="frame" x="157" y="0.0" width="147" height="44"/>
+                                <rect key="frame" x="10" y="0.0" width="0.0" height="44"/>
                                 <fontDescription key="fontDescription" name="Aller-Bold" family="Aller" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -40,9 +40,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.20392156862745098" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Pb2-dU-Elz" firstAttribute="leading" secondItem="0EI-L3-DvO" secondAttribute="leading" constant="5" id="0zi-ad-VJk"/>
                             <constraint firstItem="0gP-Ok-UyA" firstAttribute="top" secondItem="0EI-L3-DvO" secondAttribute="top" id="CPg-k2-nns"/>
-                            <constraint firstItem="Pb2-dU-Elz" firstAttribute="centerX" secondItem="0EI-L3-DvO" secondAttribute="centerX" id="Rjz-gt-N7U"/>
-                            <constraint firstAttribute="trailing" secondItem="0gP-Ok-UyA" secondAttribute="trailing" id="ZGw-FR-Iqf"/>
                             <constraint firstAttribute="bottom" secondItem="Pb2-dU-Elz" secondAttribute="bottom" id="cUo-Gf-bMQ"/>
                             <constraint firstAttribute="bottom" secondItem="0gP-Ok-UyA" secondAttribute="bottom" id="hnN-gL-Xx7"/>
                             <constraint firstItem="Pb2-dU-Elz" firstAttribute="top" secondItem="0EI-L3-DvO" secondAttribute="top" id="mJx-8d-Jp9"/>

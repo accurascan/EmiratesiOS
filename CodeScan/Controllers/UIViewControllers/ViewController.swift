@@ -78,9 +78,12 @@ class ViewController: UIViewController {
             // Fallback on earlier versions
         }
         // Do any additional setup after loading the view.
+        _imageView.layer.masksToBounds = false
+        _imageView.clipsToBounds = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ChangedOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
-//        ChangedOrientation()
+//        NotificationCenter.default.addObserver(self, selector: #selector(ChangedOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
+        ChangedOrientation()
         var width : CGFloat = 0
         var height : CGFloat = 0
         _lblTitle.text = "Scan Front Side of Emirates National ID"
@@ -198,6 +201,12 @@ class ViewController: UIViewController {
         _imageView.image = nil
         super.viewWillDisappear(animated)
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self._imageView.setNeedsLayout()
+        self._imageView.layoutSubviews()
+        self._imageView.layoutIfNeeded()
+    }
     
     @IBAction func backAction(_ sender: Any) {
         videoCameraWrapper?.stopCamera()
@@ -205,7 +214,6 @@ class ViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "ScanningDataMRZ")
         }
         exit(0)
-//        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK:- Other Method
@@ -226,21 +234,6 @@ class ViewController: UIViewController {
     }
     
     
-//    func setOCRData1(){
-//        
-////        dictBackResult.removeAll()
-////        dictFrontResult.removeAll()
-////        dictResult.removeAll()
-////
-////        isCheckCard = false
-////        isCheckcardBack = false
-////        isCheckCardBackFrint = false
-////        isflipanimation = false
-////
-////        let filepathAlt = Bundle.main.path(forResource: "haarcascade_frontalface_alt", ofType: "xml")
-//        
-//        videoCameraWrapper = VideoCameraWrapper.init(delegate: self)
-//    }
     
     
     @objc private func ChangedOrientation() {
@@ -302,7 +295,7 @@ class ViewController: UIViewController {
 extension ViewController: VideoCameraWrapperDelegate {
     
     func processedImage(_ image: UIImage!) {
-        _imageView.image = image
+//        _imageView.image = image
     }
     
     func recognizeFailed(_ message: String!) {

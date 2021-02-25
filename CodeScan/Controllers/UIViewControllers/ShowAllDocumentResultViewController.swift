@@ -10,7 +10,6 @@ import UIKit
 import SVProgressHUD
 import CoreImage
 import Accelerate
-import Alamofire
 
 struct Objects {
     var name : String!
@@ -191,8 +190,6 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
         }
         
         
-//        tblViewAllDocumentResult.estimatedRowHeight = 60.0
-//        tblViewAllDocumentResult.rowHeight = UITableView.automaticDimension
         
         
         for (key,value) in dictFinalResultFront{
@@ -242,7 +239,6 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
         if isFirstTime{
             isFirstTime = false
             self.setData()
-            sendMail()// this function Called set data in tableView
         }
         
         
@@ -371,105 +367,6 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
         }
     }
     
-    func sendMail(){
-
-            DispatchQueue.global(qos: .background).async {
-            var subjectTitle: String = ""
-            var mailBody: String = ""
-            var givenNames: String = ""
-            var surName: String = ""
-            var fmScr : String = ""
-            var liveScr : String = ""
-            var cardType : String = ""
-            var faceImage: UIImage?
-            var arrDocument: [UIImage] = [UIImage]()
-                var country: String = ""
-            let br = "<br/>";
-            //=============================== Mail Body =============================== //
-
-                for dictFinalData in self.arrDocumentData{
-                    if dictFinalData[KEY_TITLE] != nil{
-                        if dictFinalData[KEY_TITLE] as! String == "FIRST NAME : "{
-                            givenNames = dictFinalData[KEY_VALUE] as! String
-                        }
-
-                        if dictFinalData[KEY_TITLE] as! String == "COUNTRY : "{
-                            country = dictFinalData[KEY_VALUE] as! String
-                        }
-                    }
-                }
-
-//                for objData in self.arrFace{
-//                    if let decodedData = Data(base64Encoded: objData, options: .ignoreUnknownCharacters) {
-//                        let image = UIImage(data: decodedData)
-//                        faceImage = image
-//
-//                    }
-//                }
-
-                if self.imgViewFront != nil{
-                    arrDocument.append(self.imgViewFront!)
-                }
-
-                if self.imgViewBack != nil{
-                    arrDocument.append(self.imgViewBack!)
-                }
-
-                
-                fmScr = self.getValue1(stKey: "FACEMATCH SCORE : ")
-                
-                if !fmScr.isEmpty{
-                    mailBody += "FaceMatch Score: \(fmScr) \(br)"
-                    mailBody += "\(br)"
-                }
-
-                //Passport
-                subjectTitle  = "iOS OCR Test - MRZ + \(country) \(givenNames)" //Mail Title
-
-                    mailBody += "Document: \(self.getValue(stKey: "DOCUMENT TYPE : ")) \(br)"
-                    mailBody += "Last Name: \(self.getValue(stKey: "LAST NAME : ")) \(br)"
-                    mailBody += "First Name: \(self.getValue(stKey: "FIRST NAME : ")) \(br)"
-                    mailBody += "Document No: \(self.getValue(stKey: "DOCUMENT NO : ")) \(br)"
-                    mailBody += "Document Check Number: \(self.getValue(stKey: "DOCUMENT CHECK NUMBER : ")) \(br)"
-                    mailBody += "Country: \(self.getValue(stKey: "COUNTRY : ")) \(br)"
-                    mailBody += "Nationality: \(self.getValue(stKey: "NATIONALITY : ")) \(br)"
-                    mailBody += "Sex: \(self.getValue(stKey: "SEX : ")) \(br)"
-                    mailBody += "Date of Birth: \(self.getValue(stKey: "DATE OF BIRTH : ")) \(br)"
-                    mailBody += "Birth Check Number: \(self.getValue(stKey: "BIRTH CHECK NUMBER : ")) \(br)"
-                    mailBody += "Date of Expiry: \(self.getValue(stKey: "DATE OF EXPIRY : ")) \(br)"
-                    mailBody += "Expiration Check Number: \(self.getValue(stKey: "EXPIRATION CHECK NUMBER : ")) \(br)"
-                    mailBody += "Other ID: \(self.getValue(stKey: "OTHER ID : ")) \(br)"
-                    mailBody += "Other ID Check: \(self.getValue(stKey: "OTHER ID CHECK : ")) \(br)"
-                    mailBody += "Second Row Check Number: \(self.getValue(stKey: "SECOND ROW CHECK NUMBER : ")) \(br)"
-                    mailBody += "\(br)"
-            //=============================== Mail Body =============================== //
-//            print(subjectTitle)
-//            print(arrDocument)
-//            print(mailBody)
-//            print(self.faceChozImage as Any)
-
-            var dictParam: [String: String] = [String: String]()
-            dictParam["mailSubject"] = subjectTitle
-            dictParam["platform"] = "iOS"
-            dictParam["type"] = "MRZ"
-            dictParam["facematch"] = fmScr == "" ? "False" : "True"
-            dictParam["liveness"] = liveScr == "" ? "False" : "True"
-            dictParam["mailBody"] = mailBody
-
-            let sharedInstance = NetworkReachabilityManager()!
-            var isConnectedToInternet:Bool {
-                return sharedInstance.isReachable
-            }
-            if(isConnectedToInternet){
-                let post = PostResult()
-                post.postMethodWithParamsAndImage(parameters: dictParam, forMethod: "https://accurascan.com/sendEmailApi/sendEmail.php", image: arrDocument, faceImg: self.faceChozImage == nil ? nil : self.faceChozImage , success: { (response) in
-                    print(response)
-                }) { (error) in
-                    print(error)
-                }
-            }
-        }
-    }
 
 
 func getValue(stKey: String) -> String {
@@ -673,30 +570,23 @@ func getValue(stKey: String) -> String {
                         
                         self.faceChozImage = image
                         
-//                        for (index,var dict) in self.arrDocumentData.enumerated(){
-//                            for st in dict.keys{
-//                                if st == KEY_FACE_IMAGE{
-//
-//                                    //                                    self.arrDocumentData[index] = dict
-//                                    isFindImg = true
-//                                    break
-//                                }
-//                                if isFindImg{ break }
-//                            }
-//                        }
                         
                         self.removeOldValue("LIVENESS SCORE : ")
 //                        self.btnFaceMatch.isHidden = true
                         self.removeOldValue("FACEMATCH SCORE : ")
                         let twoDecimalPlaces = String(format: "%.2f", fm_Score * 100) //Match score Convert Float Value
-                        let dict = [KEY_VALUE: "\(twoDecimalPlaces)",KEY_TITLE:"FACEMATCH SCORE : "] as [String : AnyObject]
+                        let dict = [KEY_VALUE: "\(twoDecimalPlaces) %",KEY_TITLE:"FACEMATCH SCORE : "] as [String : AnyObject]
                         self.arrDocumentDataFace.insert(dict, at: 0)
-                        self.faceScoreData = twoDecimalPlaces
+                        self.faceScoreData = "\(twoDecimalPlaces) %"
                         
                     }else {
+                        self.faceChozImage = chosenImage
+                        self.faceScoreData = "0.00 %"
 //                        self.btnFaceMatch.isHidden = false
                     }
-                    self.sendMail()
+                } else {
+                    self.faceChozImage = chosenImage
+                    self.faceScoreData = "0.00 %"
                 }
                 UIView.animate (withDuration: 0.1, animations: {
                     self.tblViewAllDocumentResult.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
@@ -731,18 +621,12 @@ func getValue(stKey: String) -> String {
             if newY + newHeight > image.size.height{
                 newHeight = image.size.height - newY
             }
-            
-            // This is the rect that we've calculated out and this is what is actually used below
+
             let rect = CGRect(x: newX, y: newY, width: newWidth, height: newHeight)
             let imageRef: CGImage = contextImage.cgImage!.cropping(to: rect)!
             
             let image1: UIImage = UIImage(cgImage: imageRef)
             
-            // Actually do the resizing to the rect using the ImageContext stuff
-    //        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-    //        image.draw(in: rect)
-    //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    //        UIGraphicsEndImageContext()
 
             return image1
         }
