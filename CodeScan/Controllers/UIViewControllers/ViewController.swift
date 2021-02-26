@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var constraintFlipImageWidth: NSLayoutConstraint!
     @IBOutlet weak var constraintFlipImageHeight: NSLayoutConstraint!
     @IBOutlet weak var viewNavigation: UIView!
+    @IBOutlet weak var viewStatusbar: UIView!
     
     
     var videoCameraWrapper: VideoCameraWrapper? = nil
@@ -56,6 +57,9 @@ class ViewController: UIViewController {
     var isCheckFirstTime : Bool?
     var setImage : Bool?
     var _imageView1: UIImageView?
+    var statusBarRect = CGRect()
+    var bottomPadding:CGFloat = 0.0
+    var topPadding: CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,9 +68,22 @@ class ViewController: UIViewController {
         setImage = true
         imageViewCountryImage.layer.cornerRadius = 8.0
         
+        statusBarRect = UIApplication.shared.statusBarFrame
+        let window = UIApplication.shared.windows.first
+       
+        if #available(iOS 11.0, *) {
+            bottomPadding = window!.safeAreaInsets.bottom
+            topPadding = window!.safeAreaInsets.top
+        } else {
+            // Fallback on earlier versions
+        }
         // Do any additional setup after loading the view.
+        _imageView.layer.masksToBounds = false
+        _imageView.clipsToBounds = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ChangedOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(ChangedOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
+        ChangedOrientation()
         var width : CGFloat = 0
         var height : CGFloat = 0
         _lblTitle.text = "Scan Front Side of Emirates National ID"
@@ -138,47 +155,6 @@ class ViewController: UIViewController {
     }
     
     
-//    func setCarama() -> UIView{
-//       let status = AVCaptureDevice.authorizationStatus(for: .video)
-//       if status == .authorized {
-//            setOCRData()
-//            let shortTap = UITapGestureRecognizer(target: self, action: #selector(handleTapToFocus(_:)))
-//            shortTap.numberOfTapsRequired = 1
-//            shortTap.numberOfTouchesRequired = 1
-//            self.view.addGestureRecognizer(shortTap)
-//        } else if status == .denied {
-//            let alert = UIAlertController(title: "AccuraSdk", message: "It looks like your privacy settings are preventing us from accessing your camera.", preferredStyle: .alert)
-//            let yesButton = UIAlertAction(title: "OK", style: .default) { _ in
-//                if #available(iOS 10.0, *) {
-//                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
-//                } else {
-//                    UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
-//                }
-//            }
-//            alert.addAction(yesButton)
-//
-//            self.present(alert, animated: true, completion: nil)
-//        } else if status == .restricted {
-//
-//        } else if status == .notDetermined  {
-//            AVCaptureDevice.requestAccess(for: .video) { granted in
-//                if granted {
-//
-//                    self.setOCRData()
-//
-//                    self.videoCameraWrapper?.startCamera()
-//
-//                    let shortTap = UITapGestureRecognizer(target: self, action: #selector(self.handleTapToFocus(_:)))
-//                    shortTap.numberOfTapsRequired = 1
-//                    shortTap.numberOfTouchesRequired = 1
-//                } else {
-//                    print("Not granted access")
-//                }
-//            }
-//        }
-//
-//        return view
-//    }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -188,6 +164,7 @@ class ViewController: UIViewController {
         
         
         viewNavigation.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
+        viewStatusbar.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
         
         isFront = true
         if setImage!{
@@ -224,13 +201,19 @@ class ViewController: UIViewController {
         _imageView.image = nil
         super.viewWillDisappear(animated)
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self._imageView.setNeedsLayout()
+        self._imageView.layoutSubviews()
+        self._imageView.layoutIfNeeded()
+    }
     
     @IBAction func backAction(_ sender: Any) {
         videoCameraWrapper?.stopCamera()
         if UserDefaults.standard.value(forKey: "ScanningDataMRZ") != nil{
             UserDefaults.standard.removeObject(forKey: "ScanningDataMRZ")
         }
-        self.navigationController?.popViewController(animated: true)
+        exit(0)
     }
     
     //MARK:- Other Method
@@ -251,30 +234,17 @@ class ViewController: UIViewController {
     }
     
     
-//    func setOCRData1(){
-//        
-////        dictBackResult.removeAll()
-////        dictFrontResult.removeAll()
-////        dictResult.removeAll()
-////
-////        isCheckCard = false
-////        isCheckcardBack = false
-////        isCheckCardBackFrint = false
-////        isflipanimation = false
-////
-////        let filepathAlt = Bundle.main.path(forResource: "haarcascade_frontalface_alt", ofType: "xml")
-//        
-//        videoCameraWrapper = VideoCameraWrapper.init(delegate: self)
-//    }
     
     
     @objc private func ChangedOrientation() {
         var width: CGFloat = 0.0
         var height: CGFloat = 0.0
         
-        width = UIScreen.main.bounds.size.width * 0.90
-        height = UIScreen.main.bounds.size.height * 0.30
-
+        width = UIScreen.main.bounds.size.width
+        height = UIScreen.main.bounds.size.height - (statusBarRect.height + bottomPadding + topPadding)
+        
+        width = width * 5 / 5.6
+        height = width * CGFloat(0.636666667)
         _constant_width.constant = width
         _constant_height.constant = height
         
@@ -325,7 +295,7 @@ class ViewController: UIViewController {
 extension ViewController: VideoCameraWrapperDelegate {
     
     func processedImage(_ image: UIImage!) {
-        _imageView.image = image
+//        _imageView.image = image
     }
     
     func recognizeFailed(_ message: String!) {

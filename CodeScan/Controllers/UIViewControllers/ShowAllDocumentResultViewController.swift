@@ -10,7 +10,6 @@ import UIKit
 import SVProgressHUD
 import CoreImage
 import Accelerate
-import Alamofire
 
 struct Objects {
     var name : String!
@@ -41,6 +40,7 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
     
     @IBOutlet weak var btnFaceMatch: UIButton!
     @IBOutlet weak var viewNavigationBar: UIView!
+    @IBOutlet weak var viewStatusbar: UIView!
     
     
     //MARK:- Variable
@@ -97,6 +97,7 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
         super.viewDidLoad()
         
        viewNavigationBar.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
+        viewStatusbar.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
         
         isFirstTime = true
         
@@ -122,7 +123,7 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
         }
         
         if UserDefaults.standard.value(forKey: "ScanningDataMRZ") != nil{
-            dictScanningData  = UserDefaults.standard.value(forKey: "ScanningDataMRZ") as! NSDictionary  // Get UserDefaults Store Dictionary 
+            dictScanningData  = UserDefaults.standard.value(forKey: "ScanningDataMRZ") as! NSDictionary  // Get UserDefaults Store Dictionary
         }
         
         if let strline: String =  dictScanningData["lines"] as? String {
@@ -189,8 +190,6 @@ class ShowAllDocumentResultViewController: UIViewController, UITableViewDelegate
         }
         
         
-//        tblViewAllDocumentResult.estimatedRowHeight = 60.0
-//        tblViewAllDocumentResult.rowHeight = UITableView.automaticDimension
         
         
         for (key,value) in dictFinalResultFront{
@@ -514,7 +513,7 @@ func getValue(stKey: String) -> String {
         
         picker.dismiss(animated: true, completion: nil)
         SVProgressHUD.show(withStatus: "Loading...")
-        DispatchQueue.global(qos: .background).async {
+//        DispatchQueue.global(qos: .background).async {
             guard var chosenImage:UIImage = info[self.convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else{return}
             
             //Capture Image Left flipped
@@ -553,10 +552,7 @@ func getValue(stKey: String) -> String {
                      */
                     let face2 : NSFaceRegion? = EngineWrapper.detectTargetFaces(chosenImage, feature1: self.faceRegion?.feature as Data?)   //identify face in back image which found in front image
                     
-                    let data = face2?.bound
-                     
-                     
-                    let image = self.resizeImage(image: chosenImage, targetSize: data!)
+                   
                     
                     
                     /*
@@ -566,32 +562,31 @@ func getValue(stKey: String) -> String {
                      */
                     let fm_Score = EngineWrapper.identify(self.faceRegion?.feature, featurebuff2: face2?.feature)
                     if(fm_Score != 0.0){
+                        let data = face2?.bound
+                         
+                         
+                        let image = self.resizeImage(image: chosenImage, targetSize: data!)
                         var isFindImg: Bool = false
                         
                         self.faceChozImage = image
                         
-//                        for (index,var dict) in self.arrDocumentData.enumerated(){
-//                            for st in dict.keys{
-//                                if st == KEY_FACE_IMAGE{
-//
-//                                    //                                    self.arrDocumentData[index] = dict
-//                                    isFindImg = true
-//                                    break
-//                                }
-//                                if isFindImg{ break }
-//                            }
-//                        }
                         
                         self.removeOldValue("LIVENESS SCORE : ")
-                        self.btnFaceMatch.isHidden = true
+//                        self.btnFaceMatch.isHidden = true
                         self.removeOldValue("FACEMATCH SCORE : ")
                         let twoDecimalPlaces = String(format: "%.2f", fm_Score * 100) //Match score Convert Float Value
-                        let dict = [KEY_VALUE: "\(twoDecimalPlaces)",KEY_TITLE:"FACEMATCH SCORE : "] as [String : AnyObject]
+                        let dict = [KEY_VALUE: "\(twoDecimalPlaces) %",KEY_TITLE:"FACEMATCH SCORE : "] as [String : AnyObject]
                         self.arrDocumentDataFace.insert(dict, at: 0)
+                        self.faceScoreData = "\(twoDecimalPlaces) %"
                         
                     }else {
-                        self.btnFaceMatch.isHidden = false
+                        self.faceChozImage = chosenImage
+                        self.faceScoreData = "0.00 %"
+//                        self.btnFaceMatch.isHidden = false
                     }
+                } else {
+                    self.faceChozImage = chosenImage
+                    self.faceScoreData = "0.00 %"
                 }
                 UIView.animate (withDuration: 0.1, animations: {
                     self.tblViewAllDocumentResult.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
@@ -600,7 +595,7 @@ func getValue(stKey: String) -> String {
                 }
                 SVProgressHUD.dismiss()
             })
-        }
+//        }
     }
     
          func resizeImage(image: UIImage, targetSize: CGRect) -> UIImage {
@@ -626,18 +621,12 @@ func getValue(stKey: String) -> String {
             if newY + newHeight > image.size.height{
                 newHeight = image.size.height - newY
             }
-            
-            // This is the rect that we've calculated out and this is what is actually used below
+
             let rect = CGRect(x: newX, y: newY, width: newWidth, height: newHeight)
             let imageRef: CGImage = contextImage.cgImage!.cropping(to: rect)!
             
             let image1: UIImage = UIImage(cgImage: imageRef)
             
-            // Actually do the resizing to the rect using the ImageContext stuff
-    //        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-    //        image.draw(in: rect)
-    //        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-    //        UIGraphicsEndImageContext()
 
             return image1
         }
@@ -653,7 +642,11 @@ func getValue(stKey: String) -> String {
         case 0:
             return arrFace.count
         case 1:
-            return arrDocumentDataFace.count
+            if faceScoreData != nil {
+                return 1
+            } else {
+                return 0
+            }
         case 2:
             return arrDocumentData.count
         case 3:
@@ -699,10 +692,10 @@ func getValue(stKey: String) -> String {
         }
         if indexPath.section == 1{
             let cell: FaceMatchResultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FaceMatchResultTableViewCell") as! FaceMatchResultTableViewCell
-            if !arrDocumentDataFace.isEmpty{
+            if faceScoreData != nil{
                 cell.viewBG.backgroundColor = UIColor(red: 231.0 / 255.0, green: 52.0 / 255.0, blue: 74.0 / 255.0, alpha: 1.0)
-                let  dictResultData: [String:AnyObject] = arrDocumentDataFace[indexPath.row]
-                cell.lblName.text = "FACEMATCH SCORE : \(dictResultData[KEY_VALUE] as? String ?? "")"
+//                let  dictResultData: [String:AnyObject] = arrDocumentDataFace[indexPath.row]
+                cell.lblName.text = "FACEMATCH SCORE : \(faceScoreData ?? "")"
             }
             
             return cell

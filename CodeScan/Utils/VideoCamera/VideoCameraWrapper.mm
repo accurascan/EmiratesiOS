@@ -7,9 +7,10 @@
 //
 
 #import "VideoCameraWrapper.h"
-#import "opencv2/highgui/ios.h"
+
 #include "zinterface.h"
-#include <opencv2/imgproc/imgproc.hpp>
+#import <opencv2/videoio/cap_ios.h>
+#import <opencv2/imgcodecs/ios.h>
 #import "GlobalMethods.h"
 #include "Accura.h"
 
@@ -120,6 +121,8 @@ BOOL isCheckMSG;
 BOOL isFirstMSG;
 
 BOOL isHologram;
+BOOL ischeckMation;
+string oldMessage;
 
 
 
@@ -144,6 +147,11 @@ BOOL isHologram;
     isFirstMSG = true;
     isHologram = true;
     
+    ischeckMation = true;
+    if(loadDiction() == 0)
+    {
+        NSLog(@"Load Dic Failed");
+    }
     PrimaryData primaryData = setTemplateFirst(firstTemp, wholeresponce, changeCard, cardPosition);
     changeCard = primaryData.cardSide;
     
@@ -163,10 +171,7 @@ BOOL isHologram;
         videoCamera.grayscaleMode = NO;
         videoCamera.rotateVideo = NO;
         
-        if(loadDiction() == 0)
-        {
-            NSLog(@"Load Dic Failed");
-        }
+       
         
     }
     return self;
@@ -278,7 +283,7 @@ cv::Mat cvMatFromUIImage(UIImage* image)
     lines = @"";
     imageView = nil;
     [thread cancel];
-    
+    docrecog_scan_RecogEngine_closeOCR(1);
     threadrunning = NO;
 }
 
@@ -292,6 +297,22 @@ cv::Mat cvMatFromUIImage(UIImage* image)
     
     [lock1 lock];
     _matOrg.release();
+    
+    if (ischeckMation){
+        ischeckMation = false;
+            int doCheckData1 = doCheckData(image, image.cols,  image.rows);
+       
+            if (doCheckData1 == 0){
+                
+                [self reco_msg:"Keep Document Steady"];
+
+                ischeckMation = true;
+                _isMotion = NO;
+            }else{
+
+                _isMotion = YES;
+            }
+    }
     
     //crop
     UIImage *img = uiimageFromCVMat(image);
@@ -358,13 +379,17 @@ cv::Mat cvMatFromUIImage(UIImage* image)
     threadrunning = YES;
     
     while (true) {
-        [NSThread sleepForTimeInterval:0.05];
+        [NSThread sleepForTimeInterval:1];
         
         if (threadrunning == NO) {
             break;
         }
         
         if (_isCapturing == NO) {
+            continue;
+        }
+        
+        if (_isMotion == NO) {
             continue;
         }
         
@@ -381,7 +406,8 @@ cv::Mat cvMatFromUIImage(UIImage* image)
         dispatch_async(dispatch_get_main_queue(), ^{
             if (isFirstMSG){
                 isFirstMSG = false;
-                doucumentMsg.text = @"Keep document in frame";
+//                doucumentMsg.text = @"Keep document in frame";
+                [self reco_msg:"Keep document in frame"];
             }
             
         });
@@ -429,6 +455,16 @@ cv::Mat cvMatFromUIImage(UIImage* image)
         [self.delegate recognizeFailed:@"key not found"];
         //                    break;
     }
+    int sw = 1200;
+    float scale = (float)w/(float)h;
+    //            float fscalex = (float)sw / (float)_matOrg.cols;// src_pix->w);
+    //            int sh = ((int)(_matOrg.rows*fscalex * 8 + 31) / 32) * 4;
+    int sh = sw/(float)scale;
+    cv::Mat frameMat;
+    mrzImg.copyTo(frameMat);
+    cv::resize(frameMat, frameMat, cv::Size(sw,sh));
+    cv::split(frameMat, splits);
+    frameMat.release();
     
     // check the rectype
     /*
@@ -439,7 +475,7 @@ cv::Mat cvMatFromUIImage(UIImage* image)
 //        doucumentMsg.text = @"processing...";
 //    });
     
-    retval = doRecogGrayImg_Passport(splits[2].data, splits[1].data, splits[0].data, w, h, chlines, success, chtype, chcountry, chsurname, chgivenname, chpassportnumber, chpassportchecksum, chnationality, chbirth, chbirthchecksum,chsex, chexpirationdate, chexpirationchecksum, chpersonalnumber, chpersonalnumberchecksum, chsecondrowchecksum,chplaceofbirth,chplaceofissue, photoChannels[0], photoChannels[1], photoChannels[2],&phoW, &phoH, bPickPhoto,(char*)[path UTF8String]);
+    retval = doRecogGrayImg_Passport(splits[2].data, splits[1].data, splits[0].data, sw, sh, chlines, success, chtype, chcountry, chsurname, chgivenname, chpassportnumber, chpassportchecksum, chnationality, chbirth, chbirthchecksum,chsex, chexpirationdate, chexpirationchecksum, chpersonalnumber, chpersonalnumberchecksum, chsecondrowchecksum,chplaceofbirth,chplaceofissue, photoChannels[0], photoChannels[1], photoChannels[2],&phoW, &phoH, bPickPhoto,(char*)[path UTF8String]);
 
     tf = CACurrentMediaTime() - tf;
     NSLog(@"recogend %f",tf);
@@ -468,9 +504,12 @@ cv::Mat cvMatFromUIImage(UIImage* image)
         
         [self performSelectorOnMainThread:@selector(Recog_Successed) withObject:nil waitUntilDone:YES];
     }else{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            doucumentMsg.text = @"";
-        });
+        if(!isCheckMSG) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+//                doucumentMsg.text = @"";
+            });
+        }
+        
     }
     
     //remove splites
@@ -492,7 +531,8 @@ cv::Mat cvMatFromUIImage(UIImage* image)
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if (!isCheckMSG){
-                doucumentMsg.text = @"processing...";
+                [self reco_msg:"Processing..."];
+//                doucumentMsg.text = @"Processing...";
             }else{
                 
                 if (imageOpenCv.message != ""){
@@ -527,7 +567,7 @@ cv::Mat cvMatFromUIImage(UIImage* image)
                 [self Recog_MRZ:gimg];
             }
             
-            
+            ischeckMation = true;
             finaldata = imageOpenCv.mapData;
             
             if (finaldata.size() == 0){
@@ -535,9 +575,10 @@ cv::Mat cvMatFromUIImage(UIImage* image)
             }
             [self performSelectorOnMainThread:@selector(recog_Successed) withObject:nil waitUntilDone:YES];
         }else{
+            ischeckMation = true;
             if(!isCheckMSG){
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    doucumentMsg.text = @"";
+//                    doucumentMsg.text = @"";
                 });
             }
             
@@ -660,9 +701,35 @@ cv::Mat cvMatFromUIImage(UIImage* image)
     }
 }
 
+int checkMSG = 0;
 -(void) reco_msg:(string)imgMsg
 {
-    doucumentMsg.text = [NSString stringWithUTF8String:imgMsg.c_str()];
+    
+    if(imgMsg != ""){
+        if (imgMsg == oldMessage) {
+            return;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            oldMessage = imgMsg;
+            doucumentMsg.text = [NSString stringWithUTF8String:imgMsg.c_str()];
+        });
+        if (imgMsg != "Processing..." && checkMSG == 0) {
+            checkMSG = 1;
+            double delayInSeconds = 1500;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_MSEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                
+                
+                    oldMessage = "";
+                    
+                    doucumentMsg.text = [NSString stringWithUTF8String:oldMessage.c_str()];
+                
+                checkMSG = 0;
+            });
+        }
+    }
+    
+    
 }
 
 @end

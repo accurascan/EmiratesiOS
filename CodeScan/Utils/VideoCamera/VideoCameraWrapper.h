@@ -15,6 +15,7 @@
 {
     BOOL _isCapturing;
     NSThread *thread;
+    BOOL _isMotion;
     
 }
 

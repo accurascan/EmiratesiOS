@@ -9,8 +9,7 @@ target 'AccuraSDK' do
  pod 'IQKeyboardManagerSwift'
  pod 'SwiftyJSON'
  pod 'SVProgressHUD'
- pod 'Alamofire'
- pod 'AFNetworking', '~> 3.0'
+ pod 'OpenCV', '3.4.2'
 
 
 end
