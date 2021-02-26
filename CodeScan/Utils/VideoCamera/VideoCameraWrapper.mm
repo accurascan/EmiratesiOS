@@ -7,9 +7,10 @@
 //
 
 #import "VideoCameraWrapper.h"
-#import "opencv2/highgui/ios.h"
+
 #include "zinterface.h"
-#include <opencv2/imgproc/imgproc.hpp>
+#import <opencv2/videoio/cap_ios.h>
+#import <opencv2/imgcodecs/ios.h>
 #import "GlobalMethods.h"
 #include "Accura.h"
 

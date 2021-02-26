@@ -54,7 +54,6 @@
 		A33D33CE23EC507D001B7CD4 /* fdata.xml in Resources */ = {isa = PBXBuildFile; fileRef = A33D33C723EC507D001B7CD4 /* fdata.xml */; };
 		A33D33CF23EC507D001B7CD4 /* model2.dat in Resources */ = {isa = PBXBuildFile; fileRef = A33D33C823EC507D001B7CD4 /* model2.dat */; };
 		A33D33D023EC507D001B7CD4 /* model1.dat in Resources */ = {isa = PBXBuildFile; fileRef = A33D33C923EC507D001B7CD4 /* model1.dat */; };
-		A33E1DDB23E29FB9004FED85 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33E1DDA23E29FB9004FED85 /* opencv2.framework */; };
 		A33E204123E2A931004FED85 /* ResultTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33E203F23E2A931004FED85 /* ResultTableCell.xib */; };
 		A33E204223E2A931004FED85 /* ResultTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E204023E2A931004FED85 /* ResultTableCell.swift */; };
 		A33E204B23E2AA78004FED85 /* ListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33E204423E2AA78004FED85 /* ListTableCell.xib */; };
@@ -163,7 +162,6 @@
 		A33D33C723EC507D001B7CD4 /* fdata.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fdata.xml; sourceTree = "<group>"; };
 		A33D33C823EC507D001B7CD4 /* model2.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = model2.dat; sourceTree = "<group>"; };
 		A33D33C923EC507D001B7CD4 /* model1.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model1.dat; sourceTree = "<group>"; };
-		A33E1DDA23E29FB9004FED85 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		A33E203A23E2A463004FED85 /* Accura.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accura.h; sourceTree = "<group>"; };
 		A33E203F23E2A931004FED85 /* ResultTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultTableCell.xib; sourceTree = "<group>"; };
 		A33E204023E2A931004FED85 /* ResultTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableCell.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 				5C9AF4F82119997700700EDF /* SystemConfiguration.framework in Frameworks */,
 				5C9AF4F62119996D00700EDF /* libz.1.dylib in Frameworks */,
 				5C9AF4F42119995800700EDF /* libsqlite3.dylib in Frameworks */,
-				A33E1DDB23E29FB9004FED85 /* opencv2.framework in Frameworks */,
 				A3B98A99240CE44F00A1CAAA /* AccuraFace.a in Frameworks */,
 				F17B5D65C6994F277B2EC726 /* Pods_AccuraSDK.framework in Frameworks */,
 			);
@@ -281,7 +278,6 @@
 		5C67D96A2111E02100154EB7 /* AccuraScan */ = {
 			isa = PBXGroup;
 			children = (
-				A33E1DDA23E29FB9004FED85 /* opencv2.framework */,
 				A38570EE2318029A00FF7209 /* Api Calling */,
 				A38570EC231801AD00FF7209 /* Framework */,
 				A38570EB2318018500FF7209 /* License */,
