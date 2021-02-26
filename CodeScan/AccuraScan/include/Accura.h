@@ -8,7 +8,6 @@
 
 #ifndef Accura_h
 #define Accura_h
-#include "opencv2/opencv.hpp"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
 #import <vector>
