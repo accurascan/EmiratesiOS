@@ -1,16 +1,18 @@
-# IOS Swift 
-iOS Swift Project to Integrate AccuraScan OCR and AccuraScan Face Match with 3D Selfie Technology for Liveness Check
+# Accura Emirates
 
-# Download
+iOS Swift Project to Integrate Accura Emirates  and Accura Face Match
 
-Use below command in Terminal to clone repository
+#### Clone Project
+* Use `git clone https://github.com/accurascan/EmiratesiOS` command to clone repository
 
-install git-lfs
+* After completing git clone then install pod using `pod install` command
 
-git clone https://github.com/accurascan/swift.git
+* open `AccuraSDK.xcworkspace` in Xcode
 
-After completing above command install pod with below command
+#### Add files to project root directory
 
-pod install
+1. `key.license` // for Accura Emirates
 
-Once installation is done open AccuraSDK.xcworkspace in xcode
+2. `accuraface.license` // for Accura Face Match
+
+Generate your Accura license from https://accurascan.com/developer/dashboard.

@@ -16,7 +16,6 @@
 		5C67D99A2111E44E00154EB7 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C67D9952111E44E00154EB7 /* SBJsonWriter.m */; };
 		5C67D9A72111E48C00154EB7 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C67D9A42111E48B00154EB7 /* SVProgressHUD.bundle */; };
 		5C67D9A82111E48C00154EB7 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C67D9A62111E48B00154EB7 /* SVProgressHUD.m */; };
-		5C8062E6212AF43C00500A81 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C8062E5212AF43C00500A81 /* Readme.md */; };
 		5C94E024211ACA8200428686 /* Aller_Std.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C94E01D211ACA8200428686 /* Aller_Std.ttf */; };
 		5C94E025211ACA8200428686 /* Aller_Std_BdIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C94E01E211ACA8200428686 /* Aller_Std_BdIt.ttf */; };
 		5C94E026211ACA8200428686 /* Aller_Std_It.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C94E01F211ACA8200428686 /* Aller_Std_It.ttf */; };
@@ -69,6 +68,7 @@
 		A3A59CBF23EED3840028F551 /* FaceMatchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A59CBD23EED3840028F551 /* FaceMatchResultTableViewCell.swift */; };
 		A3A59CC023EED3840028F551 /* FaceMatchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3A59CBE23EED3840028F551 /* FaceMatchResultTableViewCell.xib */; };
 		A3B98A99240CE44F00A1CAAA /* AccuraFace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B98A98240CE44F00A1CAAA /* AccuraFace.a */; };
+		A3CCE8B925E8D83200A38576 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A3CCE8B825E8D83200A38576 /* README.md */; };
 		A3DB282D2484B3AD00DC504B /* key.license in Resources */ = {isa = PBXBuildFile; fileRef = A3DB282B2484B3AC00DC504B /* key.license */; };
 		A3DB282E2484B3AD00DC504B /* accuraface.license in Resources */ = {isa = PBXBuildFile; fileRef = A3DB282C2484B3AD00DC504B /* accuraface.license */; };
 		A3E4E78F25E66ED400EEFC89 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E4E78E25E66ED400EEFC89 /* Launch Screen.storyboard */; };
@@ -120,7 +120,6 @@
 		5C67D9A42111E48B00154EB7 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		5C67D9A52111E48B00154EB7 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		5C67D9A62111E48B00154EB7 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		5C8062E5212AF43C00500A81 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		5C94E01D211ACA8200428686 /* Aller_Std.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Std.ttf; sourceTree = "<group>"; };
 		5C94E01E211ACA8200428686 /* Aller_Std_BdIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Std_BdIt.ttf; sourceTree = "<group>"; };
 		5C94E01F211ACA8200428686 /* Aller_Std_It.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Std_It.ttf; sourceTree = "<group>"; };
@@ -182,6 +181,7 @@
 		A3A59CBE23EED3840028F551 /* FaceMatchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FaceMatchResultTableViewCell.xib; sourceTree = "<group>"; };
 		A3B98A98240CE44F00A1CAAA /* AccuraFace.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AccuraFace.a; sourceTree = "<group>"; };
 		A3BD2BF48CC8B09BF1D1065E /* Pods-Accura Scan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Accura Scan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Accura Scan/Pods-Accura Scan.release.xcconfig"; sourceTree = "<group>"; };
+		A3CCE8B825E8D83200A38576 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		A3DB282B2484B3AC00DC504B /* key.license */ = {isa = PBXFileReference; lastKnownFileType = file; path = key.license; sourceTree = "<group>"; };
 		A3DB282C2484B3AD00DC504B /* accuraface.license */ = {isa = PBXFileReference; lastKnownFileType = text; path = accuraface.license; sourceTree = "<group>"; };
 		A3E4E78E25E66ED400EEFC89 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -395,7 +395,7 @@
 				6104CC7920BB4E6D00AC428E /* AppDelegate.swift */,
 				6104CC8320BB4E6E00AC428E /* Assets.xcassets */,
 				6104CC8820BB4E6E00AC428E /* Info.plist */,
-				5C8062E5212AF43C00500A81 /* Readme.md */,
+				A3CCE8B825E8D83200A38576 /* README.md */,
 			);
 			path = CodeScan;
 			sourceTree = "<group>";
@@ -623,7 +623,6 @@
 			files = (
 				A33D33CE23EC507D001B7CD4 /* fdata.xml in Resources */,
 				A33D33CF23EC507D001B7CD4 /* model2.dat in Resources */,
-				5C8062E6212AF43C00500A81 /* Readme.md in Resources */,
 				5C94E024211ACA8200428686 /* Aller_Std.ttf in Resources */,
 				6104CC8420BB4E6E00AC428E /* Assets.xcassets in Resources */,
 				5C94E027211ACA8200428686 /* Aller_Std_Lt.ttf in Resources */,
@@ -635,6 +634,7 @@
 				A33E204D23E2AA78004FED85 /* FirstTableViewCell.xib in Resources */,
 				5C94E02A211ACA8200428686 /* AllerDisplay_Std_Rg.ttf in Resources */,
 				A33D33CD23EC507D001B7CD4 /* ZoomHybrid.pub in Resources */,
+				A3CCE8B925E8D83200A38576 /* README.md in Resources */,
 				A33E204B23E2AA78004FED85 /* ListTableCell.xib in Resources */,
 				A3DB282E2484B3AD00DC504B /* accuraface.license in Resources */,
 				A33E205523E2AB26004FED85 /* UserImgTableCell.xib in Resources */,
