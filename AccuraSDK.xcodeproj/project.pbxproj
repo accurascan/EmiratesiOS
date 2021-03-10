@@ -45,7 +45,6 @@
 		617EB0D220BB655300BCBFD9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EB0D120BB655300BCBFD9 /* UIColorExtensions.swift */; };
 		617EB0E120BB705D00BCBFD9 /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EB0E020BB705D00BCBFD9 /* NSObjectExtensions.swift */; };
 		617EB0EB20BB8F2B00BCBFD9 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617EB0EA20BB8F2B00BCBFD9 /* UIViewExtensions.swift */; };
-		A3091FF02489190D001F9F5B /* AccuraEmiratesOCR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3091FEF2489190D001F9F5B /* AccuraEmiratesOCR.a */; };
 		A33D33CA23EC507D001B7CD4 /* default_user.png in Resources */ = {isa = PBXBuildFile; fileRef = A33D33C323EC507D001B7CD4 /* default_user.png */; };
 		A33D33CB23EC507D001B7CD4 /* mMQDF_f_Passport_bottom.dic in Resources */ = {isa = PBXBuildFile; fileRef = A33D33C423EC507D001B7CD4 /* mMQDF_f_Passport_bottom.dic */; };
 		A33D33CC23EC507D001B7CD4 /* mMQDF_f_Passport_bottom_Gray.dic in Resources */ = {isa = PBXBuildFile; fileRef = A33D33C523EC507D001B7CD4 /* mMQDF_f_Passport_bottom_Gray.dic */; };
@@ -63,6 +62,7 @@
 		A33E205123E2AA78004FED85 /* FirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E204A23E2AA78004FED85 /* FirstTableViewCell.swift */; };
 		A33E205423E2AB26004FED85 /* UserImgTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33E205223E2AB26004FED85 /* UserImgTableCell.swift */; };
 		A33E205523E2AB26004FED85 /* UserImgTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A33E205323E2AB26004FED85 /* UserImgTableCell.xib */; };
+		A34F49D925F8D5E900C03698 /* AccuraEmiratesOCR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A3091FEF2489190D001F9F5B /* AccuraEmiratesOCR.a */; };
 		A36DA6BC23EFE09000F3840D /* haarcascade_frontalface_alt.xml in Resources */ = {isa = PBXBuildFile; fileRef = A36DA6BB23EFE08F00F3840D /* haarcascade_frontalface_alt.xml */; };
 		A3A51C7323E3DFB20048DA94 /* ShowAllDocumentResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A51C7223E3DFB20048DA94 /* ShowAllDocumentResultViewController.swift */; };
 		A3A59CBF23EED3840028F551 /* FaceMatchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A59CBD23EED3840028F551 /* FaceMatchResultTableViewCell.swift */; };
@@ -73,7 +73,7 @@
 		A3DB282E2484B3AD00DC504B /* accuraface.license in Resources */ = {isa = PBXBuildFile; fileRef = A3DB282C2484B3AD00DC504B /* accuraface.license */; };
 		A3E4E78F25E66ED400EEFC89 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3E4E78E25E66ED400EEFC89 /* Launch Screen.storyboard */; };
 		A3FE6B1C23EBE851006DB239 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3FE6B1B23EBE851006DB239 /* MainStoryboard_iPhone.storyboard */; };
-		F17B5D65C6994F277B2EC726 /* Pods_AccuraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1E5ACBB7521B13715541C2 /* Pods_AccuraSDK.framework */; };
+		EB03950BE2AF7C955393CD1C /* Pods_AccuraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0989D1E79C97FC5ED539F55 /* Pods_AccuraSDK.framework */; };
 		FA8E4D7A23DCADDC00C0F7CF /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8E4D7923DCADDC00C0F7CF /* FaceView.swift */; };
 		FAD8827923DD893F007247EC /* DetectResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD8827823DD893F007247EC /* DetectResult.swift */; };
 		FAD8827B23DD8BB5007247EC /* FaceImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD8827A23DD8BB5007247EC /* FaceImageView.swift */; };
@@ -101,7 +101,6 @@
 		030BEC0B2269EFC9002450E0 /* cam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cam.png; sourceTree = "<group>"; };
 		0540F6CC908839F9619257A0 /* Pods-AccuraSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccuraSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-AccuraSDK/Pods-AccuraSDK.release.xcconfig"; sourceTree = "<group>"; };
 		081FC0F82D5D0D87B50F5A7D /* Pods_Accura_Lines.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Accura_Lines.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B1E5ACBB7521B13715541C2 /* Pods_AccuraSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccuraSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C67D96B2111E03500154EB7 /* Accura Scan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Accura Scan-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C67D9852111E43D00154EB7 /* GlobalMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalMethods.h; sourceTree = "<group>"; };
 		5C67D9862111E43D00154EB7 /* GlobalMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalMethods.m; sourceTree = "<group>"; };
@@ -153,6 +152,7 @@
 		617EB0E020BB705D00BCBFD9 /* NSObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
 		617EB0EA20BB8F2B00BCBFD9 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		9CECF16C6E84083F97DABCB3 /* Pods_Accura_Scan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Accura_Scan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0989D1E79C97FC5ED539F55 /* Pods_AccuraSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccuraSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3091FEF2489190D001F9F5B /* AccuraEmiratesOCR.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AccuraEmiratesOCR.a; sourceTree = "<group>"; };
 		A33D33C323EC507D001B7CD4 /* default_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_user.png; sourceTree = "<group>"; };
 		A33D33C423EC507D001B7CD4 /* mMQDF_f_Passport_bottom.dic */ = {isa = PBXFileReference; lastKnownFileType = file; path = mMQDF_f_Passport_bottom.dic; sourceTree = "<group>"; };
@@ -218,7 +218,6 @@
 				5C9AF50C21199A0A00700EDF /* Accelerate.framework in Frameworks */,
 				5C9AF50A211999FE00700EDF /* CoreVideo.framework in Frameworks */,
 				5C9AF508211999F200700EDF /* CoreMedia.framework in Frameworks */,
-				A3091FF02489190D001F9F5B /* AccuraEmiratesOCR.a in Frameworks */,
 				5C9AF506211999E500700EDF /* CoreImage.framework in Frameworks */,
 				5C9AF504211999C600700EDF /* QuartzCore.framework in Frameworks */,
 				5C9AF502211999BD00700EDF /* AudioToolbox.framework in Frameworks */,
@@ -226,10 +225,11 @@
 				5C9AF4FC2119998E00700EDF /* MessageUI.framework in Frameworks */,
 				5C9AF4FA2119998300700EDF /* CoreData.framework in Frameworks */,
 				5C9AF4F82119997700700EDF /* SystemConfiguration.framework in Frameworks */,
+				A34F49D925F8D5E900C03698 /* AccuraEmiratesOCR.a in Frameworks */,
 				5C9AF4F62119996D00700EDF /* libz.1.dylib in Frameworks */,
 				5C9AF4F42119995800700EDF /* libsqlite3.dylib in Frameworks */,
 				A3B98A99240CE44F00A1CAAA /* AccuraFace.a in Frameworks */,
-				F17B5D65C6994F277B2EC726 /* Pods_AccuraSDK.framework in Frameworks */,
+				EB03950BE2AF7C955393CD1C /* Pods_AccuraSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,8 +477,8 @@
 				5C9AF4F52119996D00700EDF /* libz.1.dylib */,
 				5C9AF4F32119995800700EDF /* libsqlite3.dylib */,
 				081FC0F82D5D0D87B50F5A7D /* Pods_Accura_Lines.framework */,
-				1B1E5ACBB7521B13715541C2 /* Pods_AccuraSDK.framework */,
 				9CECF16C6E84083F97DABCB3 /* Pods_Accura_Scan.framework */,
+				A0989D1E79C97FC5ED539F55 /* Pods_AccuraSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -569,9 +569,9 @@
 				6104CC7220BB4E6D00AC428E /* Sources */,
 				6104CC7320BB4E6D00AC428E /* Frameworks */,
 				6104CC7420BB4E6D00AC428E /* Resources */,
-				F093CFE5980E1B39899739B4 /* [CP] Embed Pods Frameworks */,
 				A341D72C230E9AFB00FDF946 /* Embed Frameworks */,
 				FA30D04B23DEE96300BA0DC0 /* ShellScript */,
+				78EEDAE9BE3749C2DF984DCF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -656,6 +656,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		78EEDAE9BE3749C2DF984DCF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AccuraSDK/Pods-AccuraSDK-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AccuraSDK/Pods-AccuraSDK-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AccuraSDK/Pods-AccuraSDK-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BA25CFB995303AC70CB1A46E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -672,23 +689,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F093CFE5980E1B39899739B4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AccuraSDK/Pods-AccuraSDK-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AccuraSDK/Pods-AccuraSDK-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AccuraSDK/Pods-AccuraSDK-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FA30D04B23DEE96300BA0DC0 /* ShellScript */ = {
@@ -918,7 +918,8 @@
 				SWIFT_REFLECTION_METADATA_LEVEL = all;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
+				VALIDATE_WORKSPACE = YES;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64";
 			};
 			name = Debug;
 		};
@@ -973,7 +974,8 @@
 				SWIFT_REFLECTION_METADATA_LEVEL = all;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
+				VALIDATE_WORKSPACE = YES;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s x86_64";
 			};
 			name = Release;
 		};
