@@ -158,6 +158,12 @@ string oldMessage;
     grayscaleMat = firstTemp;
     firstTemp.release();
     
+    docrecog_scan_RecogEngine_setBlurPercentage(60);
+    docrecog_scan_RecogEngine_setGlarePercentage(8, 99);
+    docrecog_scan_RecogEngine_setFaceBlurPercentage(65);
+    docrecog_scan_RecogEngine_setHologramDetection(1);
+    docrecog_scan_RecogEngine_setLowLightTolerance(39);
+    docrecog_scan_RecogEngine_setMotionThreshold(15);
     if (self = [super init]) {
         self.delegate = delegate;
         
