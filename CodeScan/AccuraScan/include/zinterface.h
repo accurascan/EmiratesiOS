@@ -14,3 +14,10 @@ int doRecogGrayImg_Passport(unsigned char* rImg,unsigned char* gImg,unsigned cha
 int doFaceDetect(unsigned char* rImg, unsigned char* gImg, unsigned char* bImg, int w, int h, unsigned char* photoImgR, unsigned char* photoImgG, unsigned char* photoImgB, int* phoW, int *phoH);
 
 int docrecog_scan_RecogEngine_closeOCR(int clear_ocr_data);
+
+int docrecog_scan_RecogEngine_setBlurPercentage(int jint1);
+int docrecog_scan_RecogEngine_setGlarePercentage(int jintMin, int jintMax);
+int docrecog_scan_RecogEngine_setHologramDetection(bool jint1);
+int docrecog_scan_RecogEngine_setFaceBlurPercentage(int jint1);
+int docrecog_scan_RecogEngine_setLowLightTolerance(int tolerance);
+int docrecog_scan_RecogEngine_setMotionThreshold(int motionTolerance);
